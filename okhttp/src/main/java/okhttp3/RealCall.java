@@ -65,7 +65,7 @@ final class RealCall implements Call {
       return result;
     } finally {
       client.dispatcher().finished(this);
-    }
+    }//如果抛出IO异常还会走finally吗？
   }
 
   private void captureCallStackTrace() {

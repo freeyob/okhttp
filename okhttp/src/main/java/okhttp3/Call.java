@@ -17,7 +17,10 @@ package okhttp3;
 
 import java.io.IOException;
 
-/**
+/**核心功能：
+ * 1. 执行
+ * 2. 加入队列执行
+ * 3. 取消执行
  * A call is a request that has been prepared for execution. A call can be canceled. As this object
  * represents a single request/response pair (stream), it cannot be executed twice.
  */

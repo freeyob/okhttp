@@ -30,7 +30,7 @@ public final class Request {
   final Headers headers;
   final RequestBody body;
   final Object tag;
-
+  //这个需要深入理解
   private volatile CacheControl cacheControl; // Lazily initialized.
 
   Request(Builder builder) {

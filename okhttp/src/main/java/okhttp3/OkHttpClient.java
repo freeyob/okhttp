@@ -48,7 +48,24 @@ import okhttp3.internal.tls.CertificateChainCleaner;
 import okhttp3.internal.tls.OkHostnameVerifier;
 import okhttp3.internal.ws.RealWebSocket;
 
-/**是不是用了工厂模式
+/**
+ *
+ * 主要的接口：
+ * 1. 获取client参数
+ * 2. newCall生产call
+ * 3. newWebSocket 产生 websocket
+ *
+ *  Builder主要来配置Client参数
+ *  Bulider与Client有两种方式交互
+ *  OkHttpClient client = new OkHttpClient();默认参数
+ *  OkHttpClient  client = new OkHttpClient().Builder().build();
+ *
+ *  复制现有client参数
+ *  OkHttpClient newClient = client.newBuilder().builder();
+ *  问题：
+ *  client每个参数都是干嘛的？
+ *  是不是用了工厂模式？
+ *  这里newCall(Request)根据 Request产生Call
  * Factory for {@linkplain Call calls}, which can be used to send HTTP requests and read their
  * responses.
  *  Call是用来发送请求和接收回复的
@@ -423,7 +440,8 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
   public Builder newBuilder() {
     return new Builder(this);
   }
-
+  //为什么内部类要静态不可变
+  //这种方式增加参数有什么好处
   public static final class Builder {
     Dispatcher dispatcher;
     Proxy proxy;
